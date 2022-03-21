@@ -139,8 +139,8 @@ func NewSignature(value []byte, key []byte) (string, error) {
 	return plain + "." + signed, nil
 }
 
-//Verifies signature and returns the decoded value of the token
-func VerifySignature(value string, key []byte) ([]byte, error) {
+//ValidateSignature validates signature and returns the decoded value of the token
+func ValidateSignature(value string, key []byte) ([]byte, error) {
 	split := strings.Split(value, ".")
 	if len(split) != 2 {
 		return nil, ErrWrongFormat

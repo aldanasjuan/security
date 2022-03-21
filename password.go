@@ -40,6 +40,9 @@ func NewPassword(password string, key []byte) (hash *Hash, err error) {
 	return hash, nil
 }
 func ValidatePassword(password string, hash *Hash, key []byte) (err error) {
+	if hash == nil {
+		return ErrNilHash
+	}
 	config, err := hash.GetConfig(key)
 	if err != nil {
 		return err
